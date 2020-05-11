@@ -4,6 +4,7 @@ Structured Query Language is the standard language for databases and allows acce
 
 ## Basic SQL Commands
 
+### DML - Record Manipulation
 - INSERT - Add a new record into a table
   - INSERT INTO *table_name* (*column1*, *column2*)
     VALUES ('*value1*', '*value2*')
@@ -20,3 +21,18 @@ Structured Query Language is the standard language for databases and allows acce
   - SELECT * FROM *table_name*;
   - SELECT *column1*, *column2*
     FROM *table_name*;
+
+### DDL - Structure Manipulation
+- CREATE TABLE *table_name* () - create table
+  - *column_name* DATATYPE
+    - int IDENTITY(1,1) PRIMARY KEY -> auto-increment integer and use as Primary Key
+    - int(*x*) --> normal integer
+    - CHAR(*x*) --> Characters of fixed length *x*. Will use fixed memory regardless of input length
+    - VARCHAR(*x*) --> Upper range of Character length set (*x*). Will use input length of memory
+    - date --> date format value
+    - DECIMAL(*x*, *y*) --> Decimal number where total no. of digits = *x* and decimal place amount = *y*
+
+- ALTER TABLE *table_name* - make change to strucutre of table either adding/ removing column or changing colun syntax
+
+- DROP TABLE - delete existing table
+    - DROP COLUMN can also be used (within ALTER TABLE) to remove column instead
