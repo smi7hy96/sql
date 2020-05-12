@@ -1,6 +1,7 @@
 ## Database and Table set up
 
 ### Day One - film table
+Simple set up of one table with a primary key
 ``` sql
 USE Northwind
 
