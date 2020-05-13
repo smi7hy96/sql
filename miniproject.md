@@ -60,3 +60,69 @@ FROM [Order Details] od
 ORDER BY "Amount Discounted" DESC
 
 ```
+## EXCERCISE TWO
+``` SQL
+USE ryan_db
+
+CREATE TABLE Spartans
+(
+    Spartan_ID int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    Title VarChar(30),
+    First_Name VARCHAR(20),
+    Last_Name VARCHAR(20),
+    University VARCHAR(40),
+    Course VARCHAR(30),
+    Grade VARCHAR (10),
+    Grad_Year INT
+)
+
+INSERT INTO Spartans
+VALUES(
+    'Mr', 'Ryan', 'Smith', 'Kingston University', 'Computer Science', 'First', 2019
+)
+
+
+INSERT INTO Spartans(
+    Title, First_Name, Last_Name
+) VALUES(
+    'Mr', 'Fahad', 'Khisaf'
+),
+(
+    'Mr', 'Marcus', 'Westhuizen'
+),
+(
+    'Mr', 'Patrick', 'Clancy'
+),
+(
+    'Mr', 'Stefan', 'Okolo'
+),
+(
+    'Mr', 'Jonathan', 'Holder'
+),
+(
+    'Mr', 'Nathan', 'Forester'
+),
+(
+    'Mr', 'Avraj', 'Singh'
+),
+(
+    'Mr', 'Ashraf', 'Mohamud'
+),
+(
+    'Mr', 'Hussain', 'Ali Khan'
+),
+(
+    'Miss', 'Saskia', 'Van Barthold'
+),
+(
+    'Mr', 'Mergim', 'Berisha'
+),
+(
+    'Mr', 'Delvin', 'Roy'
+),
+(
+    'Mr', 'Samir', 'Djaafer'
+)
+
+SELECT * FROM Spartans
+```
