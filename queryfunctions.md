@@ -1,3 +1,4 @@
+## More Advance SELECT Query Functions
 ``` SQL
 USE Northwind
 
