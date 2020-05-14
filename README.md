@@ -4,6 +4,8 @@ Structured Query Language is the standard language for databases and allows acce
 
 ## Basic SQL Commands
 
+![JOIN DIAGRAM](https://i.stack.imgur.com/7uUaJ.png)
+
 ### DML - Record Manipulation
 - INSERT - Add a new record into a table
   - INSERT INTO *table_name* (*column1*, *column2*)

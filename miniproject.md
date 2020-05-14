@@ -81,7 +81,7 @@ VALUES(
     'Mr', 'Ryan', 'Smith', 'Kingston University', 'Computer Science', 'First', 2019
 )
 
-
+-- Other details not known at this time so left null
 INSERT INTO Spartans(
     Title, First_Name, Last_Name
 ) VALUES(
