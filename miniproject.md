@@ -162,11 +162,10 @@ AND o.ShippedDate IS NOT NULL
 ORDER BY (SUM(od.Quantity * od.UnitPrice)) DESC
 
 -- 3.4 AVERAGE SHIP TIME BY MONTH FOR ALL DATA IN ORDERS TABLE - PRODUCE AS LINE GRAPH IN EXCEL
-
 SELECT FORMAT(o.ShippedDate, 'MMM-yy') AS "Shipping Month", AVG(DATEDIFF(dd, o.OrderDate, o.ShippedDate)) AS "Average Ship Time"
 FROM Orders o
 WHERE o.ShippedDate IS NOT NULL
 GROUP BY YEAR(o.ShippedDate), MONTH(o.ShippedDate),FORMAT(o.ShippedDate, 'MMM-yy')
 ORDER BY YEAR(o.ShippedDate), MONTH(o.ShippedDate)
 ```
-![image](https://user-images.githubusercontent.com/62227491/82068118-81e3bc00-96c9-11ea-9b3b-834797d041e9.png))
+![image](https://user-images.githubusercontent.com/62227491/82068118-81e3bc00-96c9-11ea-9b3b-834797d041e9.png)
