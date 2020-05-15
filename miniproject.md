@@ -157,14 +157,16 @@ FROM Customers c
 INNER JOIN Orders o ON c.CustomerID = o.CustomerID
 INNER JOIN [Order Details] od ON o.OrderID = od.OrderID
 GROUP BY c.CustomerID, o.ShippedDate
-HAVING YEAR(o.ShippedDate) = '1998' --THERE ARE NO RECORDS FOR ANY YEAR LATER THAN 1998 SO HAD TO USE FIXED VALUE AS OPPOSED TO CURRENT YEAR
+HAVING YEAR(o.ShippedDate) = MAX(YEAR(o.OrderDate)) --THERE ARE NO RECORDS FOR ANY YEAR LATER THAN 1998 SO HAD TO USE FIXED VALUE AS OPPOSED TO CURRENT YEAR
+AND o.ShippedDate IS NOT NULL
 ORDER BY (SUM(od.Quantity * od.UnitPrice)) DESC
 
 -- 3.4 AVERAGE SHIP TIME BY MONTH FOR ALL DATA IN ORDERS TABLE - PRODUCE AS LINE GRAPH IN EXCEL
 
 SELECT FORMAT(o.ShippedDate, 'MMM-yy') AS "Shipping Month", AVG(DATEDIFF(dd, o.OrderDate, o.ShippedDate)) AS "Average Ship Time"
 FROM Orders o
-GROUP BY  FORMAT(o.ShippedDate, 'MMM-yy'), MONTH(o.ShippedDate), YEAR(o.ShippedDate)
+WHERE o.ShippedDate IS NOT NULL
+GROUP BY YEAR(o.ShippedDate), MONTH(o.ShippedDate),FORMAT(o.ShippedDate, 'MMM-yy')
 ORDER BY YEAR(o.ShippedDate), MONTH(o.ShippedDate)
 ```
 ![image](https://user-images.githubusercontent.com/62227491/82068118-81e3bc00-96c9-11ea-9b3b-834797d041e9.png))
