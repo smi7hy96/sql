@@ -35,14 +35,15 @@ WHERE e.Country = 'UK'
 
 --1.6 SALES TOTALS FOR ALL REGIONS (VIA TERRITORIES - 4 JOINS) WITH TOTAL SALE > 1M. USE rounding or FORMAT to present numbers
 
-SELECT c.Region, FORMAT((SUM(od.Quantity * od.UnitPrice * (1-od.Discount))), '##,##0') AS "Total Sales"
+SELECT r.RegionID, FORMAT((SUM(od.Quantity * od.UnitPrice * (1-od.Discount))), '##,##0') AS "Total Sales"
 FROM Territories t
 INNER JOIN EmployeeTerritories et ON t.TerritoryID = et.TerritoryID
 INNER JOIN Employees e ON et.EmployeeID = e.EmployeeID
 INNER JOIN Orders o ON e.EmployeeID = o.EmployeeID
-INNER JOIN Customers c ON o.CustomerID = c.CustomerID
+--INNER JOIN Customers c ON o.CustomerID = c.CustomerID -- USE this to organise BY Customer Region (change both r.regionID to c.Region)
+INNER JOIN Region r ON t.RegionID = r.RegionID -- Use this to sort by the four total regions.
 INNER JOIN [Order Details] od ON o.OrderID = od.OrderID
-GROUP BY c.Region
+GROUP BY r.RegionID
 HAVING SUM(od.Quantity * od.UnitPrice * (1-od.Discount)) > 1000000
 ORDER BY (SUM(od.Quantity * od.UnitPrice * (1-od.Discount))) DESC
 -- territories -->  EmployeeTerritories (terriryID)      -->    Employees (empNo)       -->    order  (empNo)    --> order details (orderID)
