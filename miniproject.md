@@ -126,6 +126,7 @@ INSERT INTO Spartans(
 
 SELECT * FROM Spartans
 ```
+
 ## EXERCISE 3
 ``` SQL
 use Northwind

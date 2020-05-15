@@ -131,12 +131,13 @@ ORDER BY "Total on Order" DESC
     SELECT
     DISTINCT
     FROM
+    INNER JOIN
     WHERE
     GROUP BY
     HAVING
     ORDER BY
     */
-    
+
 -- ALTER FORMAT OF VARCHAR TO DATE --> FOR CURRENCY USE 'c'
 SELECT o.OrderID, FORMAT(o.OrderDate, 'dd/MM/yyyy')
 FROM Orders o
