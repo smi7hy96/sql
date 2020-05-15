@@ -146,7 +146,7 @@ GROUP BY s.CompanyName
 HAVING SUM(od.Quantity * od.UnitPrice * (1-od.Discount)) > 10000
 ORDER BY (SUM(od.Quantity * od.UnitPrice * (1-od.Discount))) DESC
 ```
-![JOIN DIAGRAM](![image](https://user-images.githubusercontent.com/62227491/82067874-316c5e80-96c9-11ea-9e70-9c72196cc9af.png))
+![image](https://user-images.githubusercontent.com/62227491/82067874-316c5e80-96c9-11ea-9e70-9c72196cc9af.png)
 ``` SQL
 
 -- 3.3 LIST TOP 10 CUSTOMERS YTD  in ORDERS BASED ON TOTAL VALUE OF ORDERS SHIPPED
@@ -166,4 +166,4 @@ FROM Orders o
 GROUP BY  FORMAT(o.ShippedDate, 'MMM-yy'), MONTH(o.ShippedDate), YEAR(o.ShippedDate)
 ORDER BY YEAR(o.ShippedDate), MONTH(o.ShippedDate)
 ```
-![JOIN DIAGRAM]![image](https://user-images.githubusercontent.com/62227491/82068118-81e3bc00-96c9-11ea-9b3b-834797d041e9.png))
+![image](https://user-images.githubusercontent.com/62227491/82068118-81e3bc00-96c9-11ea-9b3b-834797d041e9.png))
