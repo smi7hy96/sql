@@ -33,7 +33,9 @@ SELECT e.TitleOfCourtesy + ' ' + e.FirstName + ' ' + e.LastName AS "Employee Nam
 FROM Employees e
 WHERE e.Country = 'UK'
 
---1.6 SALES TOTALS FOR ALL REGIONS (VIA TERRITORIES - 4 JOINS) WITH TOTAL SALE > 1M. USE rounding or FORMAT to present numbers
+--1.6 SALES TOTALS FOR ALL REGIONS (VIA TERRITORIES - 4 JOINS) WITH TOTAL SALE > 1M. USE rounding or FORMAT to present numbers....
+
+
 
 SELECT r.RegionID, FORMAT((SUM(od.Quantity * od.UnitPrice * (1-od.Discount))), '##,##0') AS "Total Sales"
 FROM Territories t
