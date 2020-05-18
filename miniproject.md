@@ -40,15 +40,13 @@ WHERE e.Country = 'UK'
 SELECT r.RegionID, FORMAT((SUM(od.Quantity * od.UnitPrice * (1-od.Discount))), '##,##0') AS "Total Sales"
 FROM Territories t
 INNER JOIN EmployeeTerritories et ON t.TerritoryID = et.TerritoryID
-INNER JOIN Employees e ON et.EmployeeID = e.EmployeeID
-INNER JOIN Orders o ON e.EmployeeID = o.EmployeeID
---INNER JOIN Customers c ON o.CustomerID = c.CustomerID -- USE this to organise BY Customer Region (change both r.regionID to c.Region)
+INNER JOIN Orders o ON et.EmployeeID = o.EmployeeID
 INNER JOIN Region r ON t.RegionID = r.RegionID -- Use this to sort by the four total regions.
 INNER JOIN [Order Details] od ON o.OrderID = od.OrderID
 GROUP BY r.RegionID
 HAVING SUM(od.Quantity * od.UnitPrice * (1-od.Discount)) > 1000000
 ORDER BY (SUM(od.Quantity * od.UnitPrice * (1-od.Discount))) DESC
--- territories -->  EmployeeTerritories (terriryID)      -->    Employees (empNo)       -->    order  (empNo)    --> order details (orderID)
+-- territories -->  EmployeeTerritories (terriryID)      -->     order  (empNo)    --> order details (orderID)
 
 -- 1.7 COUNT ORDERS THAT HAVE FREIGHT AMOUNT GREATER THAN 100.00 abd UK OR USA AS SHIP COUNTRY
 
@@ -136,7 +134,7 @@ use Northwind
 
 -- 3.1 List ALL EMPLOYEES and who they REPORT TO
 
-SELECT e.EmployeeID, e.TitleOfCourtesy + ' ' + e.FirstName + ' ' + e.LastName AS "Full Name", e.ReportsTo, e1.EmployeeID, e1.TitleOfCourtesy + ' ' + e1.FirstName + ' ' + e1.LastName AS "Reports To"      
+SELECT e.EmployeeID, e.TitleOfCourtesy + ' ' + e.FirstName + ' ' + e.LastName AS "Full Name", e.ReportsTo AS "Supervisor ID",  e1.TitleOfCourtesy + ' ' + e1.FirstName + ' ' + e1.LastName AS "Supervisor Name"      
 FROM Employees e
 LEFT JOIN Employees e1 ON e.ReportsTo = e1.EmployeeID
 
